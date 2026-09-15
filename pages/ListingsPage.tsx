@@ -180,16 +180,26 @@ const ListingsPage: React.FC = () => {
               <div className="space-y-10">
                 {/* Campo de Busca */}
                 <div>
-                  <label className="block text-[10px] font-black text-slate-400 dark:text-slate-400 uppercase tracking-widest mb-4 ml-2">Palavra-chave</label>
-                  <div className="relative">
-                    <Search className="absolute left-5 top-1/2 -translate-y-1/2 text-slate-400 dark:text-slate-500" size={16} />
+                  <label className="block text-[10px] font-black text-slate-400 dark:text-slate-400 uppercase tracking-widest mb-3 ml-1">Palavra-chave</label>
+                  <div className="relative flex items-center">
+                    <Search className="absolute left-4 text-slate-400 dark:text-slate-500 pointer-events-none" size={18} />
                     <input 
                       type="text" 
                       placeholder="Bairro ou rua..."
-                      className="w-full pl-14 pr-6 py-4.5 bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 rounded-[24px] text-xs font-bold outline-none focus:ring-4 focus:ring-gold-500/20 text-slate-900 dark:text-white transition-all placeholder:text-slate-400"
+                      className="w-full h-12 pl-12 pr-10 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl text-sm font-semibold outline-none focus:border-gold-500 focus:ring-2 focus:ring-gold-500/20 text-slate-900 dark:text-white transition-all placeholder:text-slate-400 dark:placeholder:text-slate-500"
                       value={filters.search}
                       onChange={(e) => setFilters(f => ({...f, search: e.target.value}))}
                     />
+                    {filters.search && (
+                      <button
+                        type="button"
+                        onClick={() => setFilters(f => ({...f, search: ''}))}
+                        className="absolute right-3.5 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 p-1 rounded-full"
+                        title="Limpar pesquisa"
+                      >
+                        <X size={14} />
+                      </button>
+                    )}
                   </div>
                 </div>
 

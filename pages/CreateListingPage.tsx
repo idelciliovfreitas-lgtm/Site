@@ -391,7 +391,7 @@ const CreateListingPage: React.FC = () => {
                     name="title" 
                     value={formData.title} 
                     onChange={handleInputChange} 
-                    className="w-full bg-slate-50/50 border-2 border-slate-50 rounded-2xl px-6 py-4.5 font-bold text-slate-700 outline-none focus:border-gold-500 focus:bg-white transition-all" 
+                    className="w-full h-14 bg-slate-50/50 border-2 border-slate-50 rounded-2xl px-6 py-3.5 font-bold text-slate-700 outline-none focus:border-gold-500 focus:bg-white transition-all" 
                     placeholder="Ex: Terreno Comercial na BR-020" 
                   />
                 </div>
@@ -434,14 +434,14 @@ const CreateListingPage: React.FC = () => {
                 </label>
                 <div className="relative">
                   <DollarSign className="absolute left-6 top-1/2 -translate-y-1/2 text-slate-300" size={18} />
-                  <input required name="price" type="number" value={formData.price} onChange={handleInputChange} className="w-full bg-slate-50/50 border-2 border-slate-50 rounded-2xl pl-14 pr-6 py-4.5 font-black text-lg text-primary-600 outline-none focus:border-gold-500 focus:bg-white transition-all" placeholder="0,00" />
+                  <input required name="price" type="number" value={formData.price} onChange={handleInputChange} className="w-full h-14 bg-slate-50/50 border-2 border-slate-50 rounded-2xl pl-14 pr-6 py-3.5 font-black text-lg text-primary-600 outline-none focus:border-gold-500 focus:bg-white transition-all" placeholder="0,00" />
                 </div>
               </div>
               <div>
                 <label className="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4">Área Total (m²)</label>
                 <div className="relative">
                   <Maximize className="absolute left-6 top-1/2 -translate-y-1/2 text-slate-300" size={18} />
-                  <input name="area" type="number" value={formData.area} onChange={handleInputChange} className="w-full bg-slate-50/50 border-2 border-slate-50 rounded-2xl pl-14 pr-6 py-4.5 font-black text-lg outline-none focus:border-gold-500 focus:bg-white transition-all" placeholder="0" />
+                  <input name="area" type="number" value={formData.area} onChange={handleInputChange} className="w-full h-14 bg-slate-50/50 border-2 border-slate-50 rounded-2xl pl-14 pr-6 py-3.5 font-black text-lg outline-none focus:border-gold-500 focus:bg-white transition-all" placeholder="0" />
                 </div>
               </div>
             </div>
