@@ -161,15 +161,15 @@ const ServicesManager: React.FC = () => {
           </p>
         </div>
 
-        <div className="flex items-center gap-4">
-          <div className="relative flex-1 md:w-64">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-300" size={16} />
+        <div className="flex items-center gap-3">
+          <div className="relative w-full sm:w-72 md:w-80">
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={16} />
             <input
               type="text"
               placeholder="Buscar serviço ou profissional..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full bg-slate-50 border border-slate-100 rounded-2xl pl-11 pr-4 py-3 text-xs font-bold outline-none focus:border-gold-500 focus:bg-white transition-all"
+              className="w-full bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl pl-11 pr-4 py-3 text-xs font-bold outline-none focus:border-gold-500 focus:bg-white dark:focus:bg-slate-900 transition-all text-slate-900 dark:text-white placeholder:text-slate-400"
             />
           </div>
           <button

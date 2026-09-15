@@ -262,27 +262,37 @@ const PortfolioManager: React.FC = () => {
       </div>
 
       {/* Filter and Search Bar */}
-      <div className="bg-white p-6 rounded-[28px] border border-slate-100 shadow-sm flex flex-col md:flex-row items-center justify-between gap-4">
-        <div className="relative w-full md:w-80">
-          <Search size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-300" />
-          <input
-            type="text"
-            placeholder="Buscar projeto por título ou local..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full pl-11 pr-4 py-3 bg-slate-50 border border-slate-200/80 rounded-2xl text-xs font-bold outline-none focus:border-primary-600 transition-colors"
-          />
+      <div className="bg-white dark:bg-slate-900 p-6 rounded-[28px] border border-slate-100 dark:border-slate-800 shadow-sm space-y-3.5">
+        <div className="flex flex-col sm:flex-row items-center gap-3">
+          <div className="relative flex-1 w-full">
+            <Search size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" />
+            <input
+              type="text"
+              placeholder="Buscar projeto por título, localização ou memorial técnico..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="w-full pl-11 pr-10 py-3 bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-2xl text-xs font-bold outline-none focus:border-gold-500 transition-colors"
+            />
+            {searchTerm && (
+              <button onClick={() => setSearchTerm('')} className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600">
+                <X size={14} />
+              </button>
+            )}
+          </div>
+          <span className="px-4 py-3 rounded-2xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs font-black uppercase tracking-wider whitespace-nowrap border border-slate-200/50 dark:border-slate-700">
+            {filteredProjects.length} {filteredProjects.length === 1 ? 'Projeto' : 'Projetos'}
+          </span>
         </div>
 
-        <div className="flex gap-2 overflow-x-auto w-full md:w-auto no-scrollbar py-1">
+        <div className="flex gap-2 overflow-x-auto w-full no-scrollbar pt-1">
           {PORTFOLIO_CATEGORIES.map((cat) => (
             <button
               key={cat}
               onClick={() => setSelectedCategory(cat)}
-              className={`px-4 py-2 rounded-xl text-[10px] font-black uppercase tracking-wider transition-all whitespace-nowrap border ${
+              className={`px-4 py-2 rounded-xl text-[10px] font-black uppercase tracking-wider transition-all whitespace-nowrap border flex-shrink-0 ${
                 selectedCategory === cat
-                  ? 'bg-primary-600 border-primary-600 text-white shadow-md'
-                  : 'bg-slate-50 border-slate-200/60 text-slate-500 hover:bg-slate-100'
+                  ? 'bg-primary-600 dark:bg-gold-500 border-primary-600 dark:border-gold-500 text-white dark:text-slate-950 shadow-md'
+                  : 'bg-slate-50 dark:bg-slate-800/80 border-slate-200/60 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-100'
               }`}
             >
               {cat}
@@ -295,9 +305,9 @@ const PortfolioManager: React.FC = () => {
       {loading ? (
         <div className="py-20 text-center text-slate-400 font-bold">Carregando portfólio...</div>
       ) : filteredProjects.length === 0 ? (
-        <div className="bg-white rounded-[32px] p-12 text-center border border-slate-100">
+        <div className="bg-white dark:bg-slate-900 rounded-[32px] p-12 text-center border border-slate-100 dark:border-slate-800">
           <FolderKanban size={48} className="mx-auto text-slate-300 mb-4" />
-          <h3 className="text-lg font-black text-slate-900">Nenhum projeto encontrado</h3>
+          <h3 className="text-lg font-black text-slate-900 dark:text-white">Nenhum projeto encontrado</h3>
           <p className="text-slate-400 text-sm mt-1">Cadastre um novo projeto ou ajuste os termos de busca.</p>
         </div>
       ) : (
@@ -305,23 +315,23 @@ const PortfolioManager: React.FC = () => {
           {filteredProjects.map((project) => (
             <div
               key={project.id}
-              className={`bg-white rounded-[32px] border overflow-hidden shadow-sm hover:shadow-xl transition-all flex flex-col ${
-                project.active === false ? 'opacity-60 border-dashed border-slate-300' : 'border-slate-100'
+              className={`bg-white dark:bg-slate-900 rounded-[28px] border overflow-hidden shadow-sm hover:shadow-lg transition-all flex flex-col ${
+                project.active === false ? 'opacity-60 border-dashed border-slate-300 dark:border-slate-700' : 'border-slate-100 dark:border-slate-800'
               }`}
             >
               {/* Image Preview with Badges */}
-              <div className="relative aspect-[16/10] bg-slate-100 overflow-hidden">
+              <div className="relative aspect-[16/10] bg-slate-100 dark:bg-slate-800 overflow-hidden">
                 <img
                   src={project.image}
                   alt={project.title}
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute top-3 left-3 flex flex-wrap gap-1.5">
-                  <span className="bg-white/95 backdrop-blur-md text-slate-900 text-[9px] font-black px-3 py-1 rounded-xl uppercase tracking-widest shadow">
+                  <span className="bg-slate-900/90 text-white text-[9px] font-black px-2.5 py-1 rounded-xl uppercase tracking-wider shadow">
                     {project.category}
                   </span>
                   {project.status && (
-                    <span className="bg-slate-900/90 text-white text-[9px] font-black px-2.5 py-1 rounded-xl uppercase tracking-widest">
+                    <span className="bg-slate-800/90 text-white text-[9px] font-bold px-2 py-1 rounded-xl uppercase tracking-wider">
                       {project.status}
                     </span>
                   )}
@@ -334,7 +344,7 @@ const PortfolioManager: React.FC = () => {
                     className={`p-2 rounded-xl backdrop-blur-md transition-all shadow ${
                       project.isFeatured 
                         ? 'bg-gold-500 text-white' 
-                        : 'bg-white/80 text-slate-400 hover:text-gold-500'
+                        : 'bg-white/80 dark:bg-slate-800/80 text-slate-400 hover:text-gold-500'
                     }`}
                     title={project.isFeatured ? 'Remover dos Destaques da Home' : 'Destacar na Home'}
                   >
@@ -354,42 +364,42 @@ const PortfolioManager: React.FC = () => {
                   </button>
                 </div>
 
-                <div className="absolute bottom-3 left-3 bg-primary-600/90 backdrop-blur-md text-white px-2.5 py-1 rounded-lg text-[9px] font-black">
+                <div className="absolute bottom-3 left-3 bg-slate-900/90 backdrop-blur-md text-gold-400 px-2.5 py-1 rounded-lg text-[9px] font-black">
                   Ano {project.year}
                 </div>
               </div>
 
-              {/* Card Body */}
-              <div className="p-6 flex-1 flex flex-col">
-                <div className="mb-3">
-                  <h3 className="font-black text-slate-900 text-base leading-snug line-clamp-1 mb-1">
-                    {project.title}
-                  </h3>
-                  <p className="text-slate-400 text-xs font-bold flex items-center gap-1">
-                    <MapPin size={12} className="text-gold-500" /> {project.location}
-                  </p>
-                </div>
+              {/* Card Body - Tight and Consistent */}
+              <div className="p-5 flex-1 flex flex-col">
+                <h3 className="font-black text-slate-900 dark:text-white text-base leading-snug line-clamp-2 h-11 mb-1">
+                  {project.title}
+                </h3>
+                
+                <p className="text-slate-400 text-xs font-bold flex items-center gap-1 mb-2.5">
+                  <MapPin size={12} className="text-gold-500 flex-shrink-0" /> 
+                  <span className="truncate">{project.location}</span>
+                </p>
 
-                <p className="text-slate-500 text-xs line-clamp-2 leading-relaxed mb-4">
+                <p className="text-slate-500 dark:text-slate-400 text-xs line-clamp-2 leading-relaxed h-8 overflow-hidden mb-3">
                   {project.description}
                 </p>
 
-                {/* Features Badges */}
-                <div className="flex flex-wrap gap-1.5 mt-auto mb-4">
-                  {project.features.slice(0, 3).map((feat, idx) => (
-                    <span key={idx} className="bg-slate-50 text-slate-500 px-2.5 py-1 rounded-lg text-[9px] font-bold">
+                {/* Features Badges (Single Row) */}
+                <div className="flex items-center gap-1.5 overflow-hidden h-7 mb-4">
+                  {project.features.slice(0, 2).map((feat, idx) => (
+                    <span key={idx} className="bg-slate-50 dark:bg-slate-800 text-slate-500 dark:text-slate-300 border border-slate-100 dark:border-slate-700 px-2.5 py-1 rounded-lg text-[9px] font-bold truncate max-w-[140px]">
                       {feat}
                     </span>
                   ))}
-                  {project.features.length > 3 && (
-                    <span className="bg-slate-50 text-slate-400 px-2 py-1 rounded-lg text-[9px] font-bold">
-                      +{project.features.length - 3}
+                  {project.features.length > 2 && (
+                    <span className="bg-slate-50 dark:bg-slate-800 text-slate-400 px-2 py-1 rounded-lg text-[9px] font-bold flex-shrink-0">
+                      +{project.features.length - 2}
                     </span>
                   )}
                 </div>
 
                 {/* Footer Controls */}
-                <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
+                <div className="pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between mt-auto">
                   <div className="flex items-center gap-2">
                     {project.beforeImage && project.afterImage && (
                       <span className="bg-purple-50 text-purple-700 border border-purple-200 px-2 py-0.5 rounded-md text-[8px] font-black uppercase">

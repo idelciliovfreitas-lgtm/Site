@@ -248,22 +248,22 @@ const AdminDashboardPage: React.FC = () => {
               <h3 className="text-2xl font-black text-slate-900 tracking-tight">Inventário de Ativos</h3>
               <p className="text-slate-400 text-[10px] font-black uppercase tracking-widest mt-1">Gerenciamento dinâmico de status e visibilidade</p>
             </div>
-            <div className="flex flex-wrap gap-4">
-              <select value={transFilter} onChange={e => setTransFilter(e.target.value as any)} className="px-5 py-4 bg-slate-50 border border-slate-100 rounded-2xl text-[10px] font-black uppercase tracking-widest outline-none">
+            <div className="flex flex-wrap items-center gap-3">
+              <select value={transFilter} onChange={e => setTransFilter(e.target.value as any)} className="px-4 py-3.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl text-[10px] font-black uppercase tracking-wider outline-none text-slate-700 dark:text-slate-200 cursor-pointer">
                 <option value="all">Venda & Aluguel</option>
                 <option value="venda">Apenas Venda</option>
                 <option value="aluguel">Apenas Aluguel</option>
               </select>
-              <select value={statusFilter} onChange={e => setStatusFilter(e.target.value as any)} className="px-5 py-4 bg-slate-50 border border-slate-100 rounded-2xl text-[10px] font-black uppercase tracking-widest outline-none">
+              <select value={statusFilter} onChange={e => setStatusFilter(e.target.value as any)} className="px-4 py-3.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl text-[10px] font-black uppercase tracking-wider outline-none text-slate-700 dark:text-slate-200 cursor-pointer">
                 <option value="all">Todos Status</option>
                 <option value="active">Ativos</option>
                 <option value="pending">Pendentes</option>
                 <option value="sold">Vendidos</option>
                 <option value="rented">Alugados</option>
               </select>
-              <div className="relative">
-                <Search size={16} className="absolute left-5 top-1/2 -translate-y-1/2 text-slate-300" />
-                <input placeholder="Buscar imóvel..." value={searchTerm} onChange={e => setSearchTerm(e.target.value)} className="pl-14 pr-8 py-4 bg-slate-50 border border-slate-100 rounded-2xl text-[10px] font-black uppercase tracking-widest outline-none w-64" />
+              <div className="relative flex-1 sm:w-80 min-w-[220px]">
+                <Search size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" />
+                <input placeholder="Buscar imóvel por título..." value={searchTerm} onChange={e => setSearchTerm(e.target.value)} className="w-full pl-11 pr-4 py-3.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl text-xs font-bold outline-none text-slate-900 dark:text-white placeholder:text-slate-400 focus:border-gold-500 transition-colors" />
               </div>
             </div>
           </div>
