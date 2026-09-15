@@ -13,6 +13,7 @@ import AuthPage from './pages/AuthPage';
 import ProfilePage from './pages/ProfilePage';
 import ServicesPage from './pages/ServicesPage';
 import PortfolioPage from './pages/PortfolioPage';
+import PWAInstallPrompt from './components/PWAInstallPrompt';
 import { LOGO_FOOTER_URL, LOGO_FALLBACK, getStoredProperties, AGENT_INFO } from './constants';
 
 const ProtectedRoute = ({ children, requireAdmin = false }: { children?: React.ReactNode, requireAdmin?: boolean }) => {
@@ -144,6 +145,9 @@ const App: React.FC = () => {
             &copy; {new Date().getFullYear()} Idelcilio Vieira - Engenharia & Negócios Imobiliários | CREA: {AGENT_INFO.crea}
           </div>
         </footer>
+
+        {/* PWA - Aviso de Instalação para novos usuários */}
+        <PWAInstallPrompt />
       </div>
     </Router>
   );

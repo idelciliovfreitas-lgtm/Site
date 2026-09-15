@@ -1,0 +1,50 @@
+{
+  "name": "Idelcilio Vieira - Imóveis & Engenharia",
+  "short_name": "Idelcilio Vieira",
+  "description": "Engenharia civil de alta precisão e negócios imobiliários em Madalena/CE.",
+  "start_url": "/",
+  "id": "/",
+  "display": "standalone",
+  "background_color": "#0b0f19",
+  "theme_color": "#0d1127",
+  "orientation": "portrait",
+  "lang": "pt-BR",
+  "icons": [
+    {
+      "src": "/favicon.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg",
+      "purpose": "any"
+    },
+    {
+      "src": "/logo.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["business", "productivity", "real_estate"],
+  "shortcuts": [
+    {
+      "name": "Portfólio de Obras",
+      "short_name": "Portfólio",
+      "description": "Veja os projetos e obras concluídas",
+      "url": "/portfolio",
+      "icons": [{ "src": "/favicon.jpg", "sizes": "192x192" }]
+    },
+    {
+      "name": "Imóveis Disponíveis",
+      "short_name": "Imóveis",
+      "description": "Consulte o catálogo de imóveis",
+      "url": "/listings",
+      "icons": [{ "src": "/favicon.jpg", "sizes": "192x192" }]
+    },
+    {
+      "name": "Serviços Técnicos",
+      "short_name": "Serviços",
+      "description": "Conheça os serviços de engenharia",
+      "url": "/services",
+      "icons": [{ "src": "/favicon.jpg", "sizes": "192x192" }]
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 
 import React, { useState, useRef, useEffect } from 'react';
-import { Home, PlusCircle, User, Settings, Menu, LogOut, ChevronDown, Shield, Sparkles, Sun, Moon } from 'lucide-react';
+import { Home, PlusCircle, User, Settings, Menu, LogOut, ChevronDown, Shield, Sparkles, Sun, Moon, Download } from 'lucide-react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { LOGO_URL, LOGO_FALLBACK } from '../constants';
 
@@ -198,9 +198,25 @@ const Header: React.FC = () => {
           >
             <span className="flex items-center gap-2">
               {isDarkMode ? <Sun size={18} className="text-gold-400" /> : <Moon size={18} className="text-slate-600" />}
-              <span>{isDarkMode ? "Modo Claro" : "Modo Escuro (Descanso para a vista)"}</span>
+              <span>{isDarkMode ? "Modo Claro" : "Modo Escuro (Descanso visual)"}</span>
             </span>
             <span className="text-xs font-black uppercase text-gold-500">Alternar</span>
+          </button>
+
+          <button
+            onClick={() => {
+              window.dispatchEvent(new CustomEvent('open-pwa-install'));
+              setIsMenuOpen(false);
+            }}
+            className="flex items-center justify-between px-5 py-4 rounded-xl bg-gold-500/10 border border-gold-500/30 font-bold text-sm text-gold-600 dark:text-gold-400 transition-colors"
+          >
+            <span className="flex items-center gap-2.5">
+              <Download size={18} className="text-gold-500" />
+              <span>Instalar Aplicativo (PWA)</span>
+            </span>
+            <span className="text-[9px] font-black uppercase bg-gold-500 text-slate-950 px-2.5 py-1 rounded-full shadow-xs">
+              Instalar
+            </span>
           </button>
 
           <div className="h-[1px] bg-slate-100 dark:bg-slate-800 my-2"></div>
