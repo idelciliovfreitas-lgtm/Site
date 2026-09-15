@@ -47,7 +47,7 @@ const App: React.FC = () => {
   return (
     <Router>
       <ScrollToTop />
-      <div className="min-h-screen flex flex-col font-sans text-gray-900 bg-secondary">
+      <div className="min-h-screen flex flex-col font-sans text-gray-900 bg-secondary dark:bg-[#0b0f19] dark:text-slate-100 transition-colors duration-300">
         <Header />
         <main className="flex-grow">
           <Routes>
