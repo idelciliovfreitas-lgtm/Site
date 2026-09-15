@@ -8,7 +8,7 @@ import { FilterState, PropertyType, Property, TransactionType } from '../types';
 
 // Componente de Card para visualização em Lista (Horizontal)
 const PropertyListCard: React.FC<{ property: Property }> = ({ property }) => (
-  <div className="bg-white rounded-[40px] shadow-sm hover:shadow-2xl hover:-translate-y-1 transition-all duration-500 border border-slate-100 overflow-hidden group flex flex-col md:flex-row h-auto md:h-72">
+  <div className="bg-white dark:bg-slate-900 rounded-[40px] shadow-sm hover:shadow-2xl hover:-translate-y-1 transition-all duration-500 border border-slate-100 dark:border-slate-800 overflow-hidden group flex flex-col md:flex-row h-auto md:h-72">
     <div className="relative w-full md:w-[380px] h-56 md:h-full overflow-hidden flex-shrink-0">
       <img 
         src={property.images[0]} 
@@ -29,53 +29,53 @@ const PropertyListCard: React.FC<{ property: Property }> = ({ property }) => (
       <div className="flex justify-between items-start mb-4">
         <div className="flex-1">
           <div className="flex items-center gap-2 mb-2">
-            <span className="text-[9px] font-black text-gold-600 uppercase tracking-widest bg-gold-50 px-3 py-1 rounded-lg">
+            <span className="text-[9px] font-black text-gold-600 dark:text-gold-400 uppercase tracking-widest bg-gold-50 dark:bg-gold-500/10 px-3 py-1 rounded-lg border border-gold-200/40">
               {property.type}
             </span>
             {property.isFeatured && <Sparkles size={12} className="text-gold-500" />}
           </div>
-          <h3 className="text-2xl font-black text-slate-900 line-clamp-1 group-hover:text-primary-600 transition-colors tracking-tight">
+          <h3 className="text-2xl font-black text-slate-900 dark:text-white line-clamp-1 group-hover:text-gold-500 transition-colors tracking-tight">
             {property.title}
           </h3>
-          <p className="flex items-center text-slate-400 text-xs font-bold uppercase tracking-widest mt-1">
-            <MapPin size={14} className="mr-2 text-primary-500" /> {property.location}
+          <p className="flex items-center text-slate-400 dark:text-slate-400 text-xs font-bold uppercase tracking-widest mt-1">
+            <MapPin size={14} className="mr-2 text-gold-500" /> {property.location}
           </p>
         </div>
         <div className="text-right">
-           <span className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] block mb-1">
+           <span className="text-[10px] font-black text-slate-400 dark:text-slate-400 uppercase tracking-[0.2em] block mb-1">
              {property.transactionType === 'venda' ? 'Investimento' : 'Aluguel Mensal'}
            </span>
-           <span className="text-3xl font-black text-slate-900 tracking-tighter">
+           <span className="text-3xl font-black text-primary-600 dark:text-gold-400 tracking-tighter">
              {new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL', maximumFractionDigits: 0 }).format(property.price)}
              {property.transactionType === 'aluguel' && <span className="text-sm">/mês</span>}
            </span>
         </div>
       </div>
 
-      <div className="flex items-center gap-6 py-6 border-y border-slate-50 mb-auto">
+      <div className="flex items-center gap-6 py-6 border-y border-slate-50 dark:border-slate-800 mb-auto">
          {property.type !== 'Terreno' && (
            <div className="flex items-center gap-2">
-              <Bed size={18} className="text-slate-300" />
-              <span className="text-sm font-black text-slate-700">{property.bedrooms || 0} <span className="text-[10px] text-slate-400 uppercase">Dorm.</span></span>
+              <Bed size={18} className="text-slate-400 dark:text-slate-500" />
+              <span className="text-sm font-black text-slate-700 dark:text-slate-200">{property.bedrooms || 0} <span className="text-[10px] text-slate-400 uppercase">Dorm.</span></span>
            </div>
          )}
          <div className="flex items-center gap-2">
-            <Expand size={18} className="text-slate-300" />
-            <span className="text-sm font-black text-slate-700">{property.area} <span className="text-[10px] text-slate-400 uppercase">m²</span></span>
+            <Expand size={18} className="text-slate-400 dark:text-slate-500" />
+            <span className="text-sm font-black text-slate-700 dark:text-slate-200">{property.area} <span className="text-[10px] text-slate-400 uppercase">m²</span></span>
          </div>
-         <div className="ml-auto flex items-center gap-2 bg-slate-50 px-3 py-1.5 rounded-xl border border-slate-100 text-slate-400 text-[10px] font-black uppercase tracking-widest">
+         <div className="ml-auto flex items-center gap-2 bg-slate-50 dark:bg-slate-800 px-3 py-1.5 rounded-xl border border-slate-100 dark:border-slate-700 text-slate-400 dark:text-slate-300 text-[10px] font-black uppercase tracking-widest">
             <Eye size={12} /> {property.views}
          </div>
       </div>
 
       <div className="mt-8 flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <img src={property.agent.avatar} className="w-8 h-8 rounded-full border-2 border-slate-50 shadow-sm" alt="" />
-          <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest">{property.agent.name}</span>
+          <img src={property.agent.avatar} className="w-8 h-8 rounded-full border-2 border-slate-50 dark:border-slate-800 shadow-sm" alt="" />
+          <span className="text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest">{property.agent.name}</span>
         </div>
         <Link 
           to={`/property/${property.id}`} 
-          className="flex items-center gap-3 bg-slate-900 text-white px-8 py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-primary-600 transition-all shadow-xl active:scale-95"
+          className="flex items-center gap-3 bg-slate-900 dark:bg-gold-500 text-white dark:text-slate-950 px-8 py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-primary-600 dark:hover:bg-gold-400 transition-all shadow-xl active:scale-95"
         >
           Explorar Detalhes <ArrowRight size={16} />
         </Link>
@@ -165,13 +165,13 @@ const ListingsPage: React.FC = () => {
           
           {/* Sidebar de Filtros - ULTRA MODERNA */}
           <aside className="w-full lg:w-[340px] shrink-0 space-y-8">
-            <div className="bg-white p-8 rounded-[48px] shadow-sm border border-slate-100/60 sticky top-32">
+            <div className="bg-white dark:bg-slate-900 p-8 rounded-[48px] shadow-sm border border-slate-100/60 dark:border-slate-800 sticky top-32">
               <div className="flex items-center justify-between mb-10">
-                <h3 className="text-sm font-black text-slate-900 uppercase tracking-[0.2em] flex items-center gap-3">
+                <h3 className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-[0.2em] flex items-center gap-3">
                   <Filter size={18} className="text-gold-500" /> Refinar Busca
                 </h3>
                 {hasActiveFilters && (
-                  <button onClick={resetFilters} className="text-[10px] font-black text-red-500 uppercase tracking-widest hover:underline flex items-center gap-1">
+                  <button onClick={resetFilters} className="text-[10px] font-black text-red-500 dark:text-red-400 uppercase tracking-widest hover:underline flex items-center gap-1">
                     <X size={12} /> Limpar
                   </button>
                 )}
@@ -180,13 +180,13 @@ const ListingsPage: React.FC = () => {
               <div className="space-y-10">
                 {/* Campo de Busca */}
                 <div>
-                  <label className="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4 ml-2">Palavra-chave</label>
+                  <label className="block text-[10px] font-black text-slate-400 dark:text-slate-400 uppercase tracking-widest mb-4 ml-2">Palavra-chave</label>
                   <div className="relative">
-                    <Search className="absolute left-5 top-1/2 -translate-y-1/2 text-slate-300" size={16} />
+                    <Search className="absolute left-5 top-1/2 -translate-y-1/2 text-slate-400 dark:text-slate-500" size={16} />
                     <input 
                       type="text" 
                       placeholder="Bairro ou rua..."
-                      className="w-full pl-14 pr-6 py-4.5 bg-slate-50 border border-slate-100 rounded-[24px] text-xs font-bold outline-none focus:ring-4 focus:ring-primary-500/5 focus:bg-white transition-all placeholder:text-slate-300"
+                      className="w-full pl-14 pr-6 py-4.5 bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 rounded-[24px] text-xs font-bold outline-none focus:ring-4 focus:ring-gold-500/20 text-slate-900 dark:text-white transition-all placeholder:text-slate-400"
                       value={filters.search}
                       onChange={(e) => setFilters(f => ({...f, search: e.target.value}))}
                     />
@@ -195,7 +195,7 @@ const ListingsPage: React.FC = () => {
 
                 {/* Tipo de Negócio */}
                 <div>
-                  <label className="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4 ml-2">Finalidade</label>
+                  <label className="block text-[10px] font-black text-slate-400 dark:text-slate-400 uppercase tracking-widest mb-4 ml-2">Finalidade</label>
                   <div className="grid grid-cols-3 gap-2">
                     {['Todos', 'venda', 'aluguel'].map((t) => (
                       <button
@@ -203,8 +203,8 @@ const ListingsPage: React.FC = () => {
                         onClick={() => setFilters(f => ({...f, transactionType: t as any}))}
                         className={`py-3 rounded-2xl text-[9px] font-black uppercase tracking-widest border-2 transition-all ${
                           filters.transactionType === t 
-                            ? 'bg-primary-600 border-primary-600 text-white shadow-lg' 
-                            : 'bg-white border-slate-50 text-slate-400 hover:border-slate-100'
+                            ? 'bg-primary-600 dark:bg-gold-500 border-primary-600 dark:border-gold-500 text-white dark:text-slate-950 shadow-lg' 
+                            : 'bg-white dark:bg-slate-800 border-slate-50 dark:border-slate-700 text-slate-400 dark:text-slate-300 hover:border-slate-100 dark:hover:border-slate-600'
                         }`}
                       >
                         {t}
@@ -215,7 +215,7 @@ const ListingsPage: React.FC = () => {
 
                 {/* Categorias */}
                 <div>
-                  <label className="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4 ml-2">Categorias</label>
+                  <label className="block text-[10px] font-black text-slate-400 dark:text-slate-400 uppercase tracking-widest mb-4 ml-2">Categorias</label>
                   <div className="flex flex-col gap-2">
                     {PROPERTY_TYPES.map(type => (
                       <button
@@ -223,15 +223,15 @@ const ListingsPage: React.FC = () => {
                         onClick={() => setFilters(f => ({...f, type: type as any}))}
                         className={`text-left px-6 py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all flex items-center justify-between border ${
                           filters.type === type 
-                            ? 'bg-primary-50 border-primary-200 text-primary-600 shadow-sm' 
-                            : 'bg-white border-transparent text-slate-500 hover:bg-slate-50'
+                            ? 'bg-primary-50 dark:bg-gold-500/10 border-primary-200 dark:border-gold-500/40 text-primary-600 dark:text-gold-400 shadow-sm font-black' 
+                            : 'bg-white dark:bg-slate-800/80 border-transparent text-slate-500 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700/60'
                         }`}
                       >
                         <span className="flex items-center gap-3">
                           {type === 'Todos' ? <Grid size={14} /> : <Home size={14} />}
                           {type}
                         </span>
-                        {filters.type === type && <div className="w-1.5 h-1.5 bg-primary-600 rounded-full"></div>}
+                        {filters.type === type && <div className="w-1.5 h-1.5 bg-primary-600 dark:bg-gold-400 rounded-full"></div>}
                       </button>
                     ))}
                   </div>
@@ -239,7 +239,7 @@ const ListingsPage: React.FC = () => {
 
                 {/* Dormitórios */}
                 <div>
-                  <label className="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4 ml-2">Dormitórios</label>
+                  <label className="block text-[10px] font-black text-slate-400 dark:text-slate-400 uppercase tracking-widest mb-4 ml-2">Dormitórios</label>
                   <div className="grid grid-cols-4 gap-2">
                     {['Todos', 1, 2, 3].map((n) => (
                       <button
@@ -247,8 +247,8 @@ const ListingsPage: React.FC = () => {
                         onClick={() => setFilters(f => ({...f, bedrooms: n as any}))}
                         className={`py-3 rounded-xl text-[10px] font-black border transition-all ${
                           filters.bedrooms === n 
-                            ? 'bg-slate-900 border-slate-900 text-white shadow-md' 
-                            : 'bg-white border-slate-100 text-slate-400 hover:bg-slate-50'
+                            ? 'bg-slate-900 dark:bg-gold-500 border-slate-900 dark:border-gold-500 text-white dark:text-slate-950 shadow-md' 
+                            : 'bg-white dark:bg-slate-800 border-slate-100 dark:border-slate-700 text-slate-400 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700'
                         }`}
                       >
                         {n === 'Todos' ? 'T' : `${n}+`}
@@ -260,19 +260,19 @@ const ListingsPage: React.FC = () => {
                 {/* Preço */}
                 <div>
                   <div className="flex justify-between items-end mb-4 ml-2">
-                    <label className="block text-[10px] font-black text-slate-400 uppercase tracking-widest">Orçamento Máx.</label>
-                    <span className="text-[10px] font-black text-primary-600">R$ {(filters.maxPrice/1000).toFixed(0)}k</span>
+                    <label className="block text-[10px] font-black text-slate-400 dark:text-slate-400 uppercase tracking-widest">Orçamento Máx.</label>
+                    <span className="text-[10px] font-black text-primary-600 dark:text-gold-400">R$ {(filters.maxPrice/1000).toFixed(0)}k</span>
                   </div>
                   <input 
                     type="range" 
                     min="1000" 
                     max="2000000" 
                     step="10000"
-                    className="w-full h-1.5 bg-slate-100 rounded-full appearance-none cursor-pointer accent-gold-500"
+                    className="w-full h-1.5 bg-slate-100 dark:bg-slate-700 rounded-full appearance-none cursor-pointer accent-gold-500"
                     value={filters.maxPrice}
                     onChange={(e) => setFilters(f => ({...f, maxPrice: Number(e.target.value)}))}
                   />
-                  <div className="flex justify-between text-[8px] font-black text-slate-300 mt-2 uppercase tracking-widest px-1">
+                  <div className="flex justify-between text-[8px] font-black text-slate-400 dark:text-slate-400 mt-2 uppercase tracking-widest px-1">
                     <span>Mín</span>
                     <span>R$ 2M+</span>
                   </div>
@@ -284,24 +284,24 @@ const ListingsPage: React.FC = () => {
           {/* Listagem */}
           <div className="flex-1 space-y-10">
             {/* Toolbar */}
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-6 bg-white px-10 py-6 rounded-[32px] shadow-sm border border-slate-100/60">
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-6 bg-white dark:bg-slate-900 px-10 py-6 rounded-[32px] shadow-sm border border-slate-100/60 dark:border-slate-800">
                <div className="flex items-center gap-4">
-                 <div className="bg-primary-50 px-4 py-2 rounded-2xl border border-primary-100/50">
-                    <span className="text-slate-900 font-black text-lg">{filteredProperties.length}</span>
-                    <span className="text-primary-600 text-[10px] font-black uppercase tracking-widest ml-2">Resultados Encontrados</span>
+                 <div className="bg-primary-50 dark:bg-slate-800 px-4 py-2 rounded-2xl border border-primary-100/50 dark:border-slate-700">
+                    <span className="text-slate-900 dark:text-white font-black text-lg">{filteredProperties.length}</span>
+                    <span className="text-primary-600 dark:text-gold-400 text-[10px] font-black uppercase tracking-widest ml-2">Resultados Encontrados</span>
                  </div>
                </div>
                
-               <div className="flex items-center gap-2 p-1.5 bg-slate-50/50 rounded-2xl border border-slate-100">
+               <div className="flex items-center gap-2 p-1.5 bg-slate-50/50 dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700">
                  <button 
                   onClick={() => setViewMode('grid')}
-                  className={`flex items-center gap-2 px-6 py-2.5 rounded-xl transition-all text-[10px] font-black uppercase tracking-widest ${viewMode === 'grid' ? 'bg-white text-primary-600 shadow-sm border border-slate-100' : 'text-slate-400 hover:text-slate-500'}`}
+                  className={`flex items-center gap-2 px-6 py-2.5 rounded-xl transition-all text-[10px] font-black uppercase tracking-widest ${viewMode === 'grid' ? 'bg-white dark:bg-slate-700 text-primary-600 dark:text-gold-400 shadow-sm border border-slate-100 dark:border-slate-600' : 'text-slate-400 hover:text-slate-500 dark:text-slate-300'}`}
                  >
                    <Grid size={16} /> Grid
                  </button>
                  <button 
                   onClick={() => setViewMode('list')}
-                  className={`flex items-center gap-2 px-6 py-2.5 rounded-xl transition-all text-[10px] font-black uppercase tracking-widest ${viewMode === 'list' ? 'bg-white text-primary-600 shadow-sm border border-slate-100' : 'text-slate-400 hover:text-slate-500'}`}
+                  className={`flex items-center gap-2 px-6 py-2.5 rounded-xl transition-all text-[10px] font-black uppercase tracking-widest ${viewMode === 'list' ? 'bg-white dark:bg-slate-700 text-primary-600 dark:text-gold-400 shadow-sm border border-slate-100 dark:border-slate-600' : 'text-slate-400 hover:text-slate-500 dark:text-slate-300'}`}
                  >
                    <List size={16} /> Lista
                  </button>

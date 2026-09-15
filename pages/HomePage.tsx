@@ -125,15 +125,18 @@ const HomePage: React.FC = () => {
       )}
 
       {/* Transaction Toggle Bar */}
-      <div className="bg-white border-b sticky top-[80px] z-40 shadow-sm">
+      {/* Transaction Toggle Bar */}
+      <div className="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 sticky top-[80px] z-40 shadow-sm">
         <div className="container mx-auto px-4 py-4 flex flex-col md:flex-row gap-6 items-center justify-between">
-          <div className="flex bg-slate-100 p-1 rounded-2xl w-full md:w-fit">
+          <div className="flex bg-slate-100 dark:bg-slate-800 p-1 rounded-2xl w-full md:w-fit">
             {(['Todos', 'venda', 'aluguel'] as Array<'Todos' | TransactionType>).map(t => (
               <button
                 key={t}
                 onClick={() => setFilters(f => ({...f, transactionType: t}))}
                 className={`flex-1 md:flex-none px-6 py-3 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all ${
-                  filters.transactionType === t ? 'bg-white text-primary-600 shadow-md' : 'text-slate-400 hover:text-slate-600'
+                  filters.transactionType === t 
+                    ? 'bg-white dark:bg-slate-700 text-primary-600 dark:text-gold-400 shadow-md font-black' 
+                    : 'text-slate-400 hover:text-slate-600 dark:text-slate-400 dark:hover:text-slate-200'
                 }`}
               >
                 {t === 'Todos' ? 'Tudo' : t === 'venda' ? 'Venda' : 'Aluguel'}
@@ -147,7 +150,9 @@ const HomePage: React.FC = () => {
                  key={type}
                  onClick={() => setFilters(prev => ({ ...prev, type: type as PropertyType | 'Todos' }))}
                  className={`px-4 py-2.5 rounded-full text-[9px] font-black uppercase tracking-widest transition-all whitespace-nowrap border ${
-                   filters.type === type ? 'bg-primary-600 border-primary-600 text-white shadow-lg' : 'bg-white border-slate-100 text-slate-500'
+                   filters.type === type 
+                     ? 'bg-primary-600 dark:bg-gold-500 border-primary-600 dark:border-gold-500 text-white dark:text-slate-950 shadow-lg' 
+                     : 'bg-white dark:bg-slate-800 border-slate-100 dark:border-slate-700 text-slate-500 dark:text-slate-300'
                  }`}
                >
                  {type}
@@ -156,12 +161,12 @@ const HomePage: React.FC = () => {
           </div>
 
           <div className="flex items-center gap-4 w-full md:w-auto">
-             <div className="flex items-center gap-2 bg-slate-50 px-4 py-2 rounded-xl border border-slate-100">
-                 <span className="text-[9px] font-black text-slate-400 uppercase">Ordem:</span>
+             <div className="flex items-center gap-2 bg-slate-50 dark:bg-slate-800 px-4 py-2 rounded-xl border border-slate-100 dark:border-slate-700">
+                 <span className="text-[9px] font-black text-slate-400 dark:text-slate-400 uppercase">Ordem:</span>
                  <select 
                    value={filters.sortBy}
                    onChange={(e) => setFilters(f => ({...f, sortBy: e.target.value as SortOption}))}
-                   className="bg-transparent text-[9px] font-black uppercase tracking-widest text-primary-600 outline-none"
+                   className="bg-transparent text-[9px] font-black uppercase tracking-widest text-primary-600 dark:text-gold-400 outline-none"
                  >
                    <option value="popularity">Relevantes</option>
                    <option value="price-asc">Menor Preço</option>
@@ -175,21 +180,21 @@ const HomePage: React.FC = () => {
 
       <div className="container mx-auto px-4 py-8">
         <div className="flex flex-col sm:flex-row items-center justify-between mb-8 gap-4">
-          <h2 className="text-xl md:text-2xl font-black text-slate-900 tracking-tight flex items-center gap-3">
+          <h2 className="text-xl md:text-2xl font-black text-slate-900 dark:text-white tracking-tight flex items-center gap-3">
             {filteredProperties.length} Oportunidades 
-            <span className="text-[10px] font-black text-gold-500 uppercase bg-gold-50 px-3 py-1 rounded-full border border-gold-100 tracking-widest">Madalena</span>
+            <span className="text-[10px] font-black text-gold-500 uppercase bg-gold-50 dark:bg-gold-500/10 px-3 py-1 rounded-full border border-gold-100 dark:border-gold-500/30 tracking-widest">Madalena</span>
           </h2>
           
-          <div className="flex bg-white p-1 rounded-xl shadow-sm border border-slate-200">
+          <div className="flex bg-white dark:bg-slate-800 p-1 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700">
             <button 
               onClick={() => { setViewMode('grid'); setIsMapExpanded(false); }}
-              className={`px-6 py-2.5 rounded-lg transition-all font-black text-[10px] uppercase tracking-widest ${viewMode === 'grid' ? 'text-primary-600 bg-slate-50 shadow-inner' : 'text-slate-400'}`}
+              className={`px-6 py-2.5 rounded-lg transition-all font-black text-[10px] uppercase tracking-widest ${viewMode === 'grid' ? 'text-primary-600 dark:text-gold-400 bg-slate-50 dark:bg-slate-700 shadow-inner' : 'text-slate-400 dark:text-slate-400'}`}
             >
                <LayoutGrid size={16} className="inline mr-2" /> Grid
             </button>
             <button 
               onClick={() => setViewMode('map')}
-              className={`px-6 py-2.5 rounded-lg transition-all font-black text-[10px] uppercase tracking-widest ${viewMode === 'map' ? 'text-primary-600 bg-slate-50 shadow-inner' : 'text-slate-400'}`}
+              className={`px-6 py-2.5 rounded-lg transition-all font-black text-[10px] uppercase tracking-widest ${viewMode === 'map' ? 'text-primary-600 dark:text-gold-400 bg-slate-50 dark:bg-slate-700 shadow-inner' : 'text-slate-400 dark:text-slate-400'}`}
             >
               <Map size={16} className="inline mr-2" /> Mapa
             </button>

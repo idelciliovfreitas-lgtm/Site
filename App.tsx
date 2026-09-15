@@ -81,20 +81,20 @@ const App: React.FC = () => {
           </Routes>
         </main>
         
-        <footer className="relative text-slate-400 py-16 overflow-hidden border-t border-slate-800">
+        <footer className="relative text-slate-300 py-8 overflow-hidden border-t border-slate-800">
           <div className="absolute inset-0 z-0">
             <img 
               src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1920&q=80" 
               alt="Footer Background" 
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover opacity-20"
             />
-            <div className="absolute inset-0 bg-slate-900/95 backdrop-blur-sm"></div>
+            <div className="absolute inset-0 bg-slate-950/95 backdrop-blur-xs"></div>
           </div>
 
-          <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-12 relative z-10">
+          <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8 relative z-10">
             <div className="col-span-1 md:col-span-2">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="h-16 overflow-hidden flex items-center">
+              <div className="flex items-center gap-3 mb-2.5">
+                <div className="h-9 overflow-hidden flex items-center">
                   <img 
                     src={footerLogo} 
                     alt="Idelcilio Vieira Horizontal" 
@@ -103,44 +103,44 @@ const App: React.FC = () => {
                   />
                 </div>
               </div>
-              <p className="max-w-sm text-sm leading-relaxed text-slate-500 font-medium">
+              <p className="max-w-md text-xs leading-relaxed text-slate-300 font-normal">
                 Soluções completas em Engenharia Civil e Negócios Imobiliários. Projetos, execução de obras e consultoria técnica em Madalena/CE.
               </p>
-              <div className="flex items-center gap-4 mt-6">
-                 <a href={`https://instagram.com/${AGENT_INFO.instagram.replace('@','')}`} target="_blank" rel="noreferrer" className="w-10 h-10 bg-white/5 rounded-xl flex items-center justify-center hover:bg-gold-500 hover:text-white transition-all border border-white/10 shrink-0">
-                    <Instagram size={20} />
+              <div className="flex items-center gap-3 mt-3">
+                 <a href={`https://instagram.com/${AGENT_INFO.instagram.replace('@','')}`} target="_blank" rel="noreferrer" className="w-8 h-8 bg-white/10 rounded-lg flex items-center justify-center hover:bg-gold-500 hover:text-white transition-all border border-white/10 shrink-0 text-slate-200">
+                    <Instagram size={16} />
                  </a>
-                 <a href={`https://instagram.com/${AGENT_INFO.instagram.replace('@','')}`} target="_blank" rel="noreferrer" className="text-sm font-black uppercase tracking-[0.2em] text-slate-400 hover:text-gold-500 transition-colors">
+                 <a href={`https://instagram.com/${AGENT_INFO.instagram.replace('@','')}`} target="_blank" rel="noreferrer" className="text-xs font-bold uppercase tracking-wider text-slate-300 hover:text-gold-400 transition-colors">
                     {AGENT_INFO.instagram}
                  </a>
               </div>
             </div>
             <div>
-              <h4 className="text-white font-black text-sm uppercase tracking-widest mb-6">Navegação</h4>
-              <ul className="space-y-3 text-sm font-bold">
-                <li><Link to="/about" className="hover:text-gold-500 transition-colors">A Cidade</Link></li>
-                <li><Link to="/listings" className="hover:text-gold-500 transition-colors">Imóveis</Link></li>
-                <li><Link to="/services" className="hover:text-gold-500 transition-colors">Serviços</Link></li>
-                <li><Link to="/portfolio" className="hover:text-gold-500 transition-colors">Portfólio</Link></li>
+              <h4 className="text-white font-bold text-xs uppercase tracking-widest mb-3">Navegação</h4>
+              <ul className="space-y-1.5 text-xs font-medium">
+                <li><Link to="/about" className="text-slate-300 hover:text-gold-400 transition-colors">A Cidade</Link></li>
+                <li><Link to="/listings" className="text-slate-300 hover:text-gold-400 transition-colors">Imóveis</Link></li>
+                <li><Link to="/services" className="text-slate-300 hover:text-gold-400 transition-colors">Serviços</Link></li>
+                <li><Link to="/portfolio" className="text-slate-300 hover:text-gold-400 transition-colors">Portfólio</Link></li>
               </ul>
             </div>
             <div>
-              <h4 className="text-white font-black text-sm uppercase tracking-widest mb-6">Atendimento</h4>
-              <ul className="space-y-4 text-sm font-bold">
-                <li className="flex items-center gap-3 text-slate-200">
-                  <Phone size={16} className="text-gold-500" /> {AGENT_INFO.phone}
+              <h4 className="text-white font-bold text-xs uppercase tracking-widest mb-3">Atendimento</h4>
+              <ul className="space-y-2 text-xs font-medium">
+                <li className="flex items-center gap-2 text-slate-200">
+                  <Phone size={14} className="text-gold-400 shrink-0" /> {AGENT_INFO.phone}
                 </li>
-                <li className="flex items-center gap-3 text-slate-400">
-                  <Mail size={16} className="text-gold-500" /> {AGENT_INFO.email}
+                <li className="flex items-center gap-2 text-slate-300">
+                  <Mail size={14} className="text-gold-400 shrink-0" /> {AGENT_INFO.email}
                 </li>
-                <li className="flex items-start gap-3 text-slate-500">
-                  <MapPin size={16} className="text-gold-500 shrink-0 mt-1" /> 
-                  <span className="text-xs leading-tight">{AGENT_INFO.address}</span>
+                <li className="flex items-start gap-2 text-slate-300">
+                  <MapPin size={14} className="text-gold-400 shrink-0 mt-0.5" /> 
+                  <span className="leading-snug">{AGENT_INFO.address}</span>
                 </li>
               </ul>
             </div>
           </div>
-          <div className="container mx-auto px-4 mt-16 pt-8 border-t border-slate-800/50 text-[10px] font-black uppercase tracking-[0.3em] text-slate-600 text-center relative z-10">
+          <div className="container mx-auto px-4 mt-6 pt-4 border-t border-slate-800/70 text-[10px] font-bold uppercase tracking-wider text-slate-400 text-center relative z-10">
             &copy; {new Date().getFullYear()} Idelcilio Vieira - Engenharia & Negócios Imobiliários | CREA: {AGENT_INFO.crea}
           </div>
         </footer>
