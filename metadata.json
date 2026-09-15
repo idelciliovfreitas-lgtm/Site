@@ -1,0 +1,7 @@
+{
+  "name": "Idelcilio Vieira - Imóveis",
+  "description": "Plataforma profissional de anúncios e gestão de imóveis Idelcilio Vieira. Sistema moderno, responsivo e otimizado.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
